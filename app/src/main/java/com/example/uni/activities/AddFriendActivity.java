@@ -45,7 +45,7 @@ public class AddFriendActivity extends BaseActivity implements UserListeners {
         binding.addFriendActivityButtonBack.setOnClickListener(view -> onBackPressed());
         binding.addFriendActivityButtonFind.setOnClickListener(view -> {
             if (binding.addFriendActivityFriendPhoneNumber.getText().toString().trim().isEmpty()){
-                ShowDialog.show(this, getResources().getString(R.string.phone_number_cannot_be_empty));
+                ShowDialog.show(this, getResources().getString(R.string.phone_number_cant_be_empty));
             } else if (!binding.addFriendActivityFriendPhoneNumber.getText().toString().trim().startsWith("+") || !Patterns.PHONE.matcher(binding.addFriendActivityFriendPhoneNumber.getText().toString().trim()).matches()) {
                 ShowDialog.show(this, getResources().getString(R.string.wrong_phone_number_format));
             } else {

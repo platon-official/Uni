@@ -51,11 +51,11 @@ public class LogInFragment extends Fragment {
         });
         binding.logInFragmentButtonCheck.setOnClickListener(view -> {
             if (binding.logInFragmentPhoneNumber.getText().toString().trim().isEmpty()) {
-                ShowDialog.show(requireActivity(), getResources().getString(R.string.phone_number_cannot_be_empty));
+                ShowDialog.show(requireActivity(), getResources().getString(R.string.phone_number_cant_be_empty));
             }else if (!binding.logInFragmentPhoneNumber.getText().toString().trim().startsWith("+") || !Patterns.PHONE.matcher(binding.logInFragmentPhoneNumber.getText().toString().trim()).matches()){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.wrong_phone_number_format));
             }else if (binding.logInFragmentPassword.getText().toString().trim().isEmpty()){
-                ShowDialog.show(requireActivity(), getResources().getString(R.string.password_cannot_be_empty));
+                ShowDialog.show(requireActivity(), getResources().getString(R.string.phone_number_cant_be_empty));
             }else if (binding.logInFragmentPassword.getText().toString().trim().length() < Constants.MINIMUM_PASSWORD_LENGTH){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.password_is_too_short));
             }else {

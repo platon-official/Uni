@@ -70,11 +70,11 @@ public class SignUpFragment extends Fragment {
             if (binding.signUpFragmentName.getText().toString().trim().isEmpty()){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.name_cant_be_empty));
             }else if(binding.signUpFragmentPhoneNumber.getText().toString().trim().isEmpty()){
-                ShowDialog.show(requireActivity(), getResources().getString(R.string.phone_number_cannot_be_empty));
+                ShowDialog.show(requireActivity(), getResources().getString(R.string.phone_number_cant_be_empty));
             }else if (!binding.signUpFragmentPhoneNumber.getText().toString().trim().startsWith("+") || !Patterns.PHONE.matcher(binding.signUpFragmentPhoneNumber.getText().toString().trim()).matches()){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.wrong_phone_number_format));
             }else if (binding.signUpFragmentPassword.getText().toString().trim().isEmpty()){
-                ShowDialog.show(requireActivity(), getResources().getString(R.string.password_cannot_be_empty));
+                ShowDialog.show(requireActivity(), getResources().getString(R.string.phone_number_cant_be_empty));
             }else if (binding.signUpFragmentPassword.getText().toString().trim().length() < Constants.MINIMUM_PASSWORD_LENGTH){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.password_is_too_short));
             }else if (!binding.signUpFragmentPassword.getText().toString().trim().equals(binding.signUpFragmentConfirmPassword.getText().toString().trim())){

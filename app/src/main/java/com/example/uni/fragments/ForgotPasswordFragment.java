@@ -45,7 +45,7 @@ public class ForgotPasswordFragment extends Fragment {
         binding.fragmentForgotPasswordButtonBack.setOnClickListener(view -> requireActivity().onBackPressed());
         binding.fragmentForgotPasswordButtonCheck.setOnClickListener(view -> {
             if (binding.fragmentForgotPasswordPhoneNumber.getText().toString().trim().isEmpty()){
-                ShowDialog.show(requireActivity(), getResources().getString(R.string.phone_number_cannot_be_empty));
+                ShowDialog.show(requireActivity(), getResources().getString(R.string.phone_number_cant_be_empty));
             }else if (!binding.fragmentForgotPasswordPhoneNumber.getText().toString().trim().startsWith("+") || !Patterns.PHONE.matcher(binding.fragmentForgotPasswordPhoneNumber.getText().toString().trim()).matches()){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.wrong_phone_number_format));
             }else if (binding.fragmentForgotPasswordRecoveryCode.getText().toString().trim().isEmpty()){
