@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.SettingsActivity"
+    android:background="?colorBackground"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    android:clipToPadding="false"
+    android:fillViewport="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/settingsActivityHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="?actionBarSize"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:background="?colorBackground">
+
+            <ImageView
+                android:id="@+id/settingsActivityButtonBack"
+                android:layout_width="@dimen/buttons_size"
+                android:layout_height="@dimen/buttons_size"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_back"
+                app:tint="@color/colorBlack" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/settings"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textSize_large"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:id="@+id/settingsActivityImageProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTop_normal"
+            android:layout_below="@id/settingsActivityHeader"
+            android:layout_centerHorizontal="true">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/settingsActivityHeaderImageProfile"
+                android:layout_width="@dimen/profileImage_size"
+                android:layout_height="@dimen/profileImage_size"
+                android:scaleType="centerCrop"
+                app:riv_oval="true" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/settingsActivityHeaderChooseImageProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/settingsActivityHeaderImageProfile"
+                android:layout_alignBottom="@+id/settingsActivityHeaderImageProfile"
+                android:backgroundTint="@color/colorPrimary"
+                android:src="@drawable/ic_photo_camera"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:rippleColor="@color/colorAccent"
+                app:tint="@color/colorAccent" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/settingsActivityTextAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/settingsActivityImageProfile"
+            android:layout_marginStart="@dimen/marginStart_normal"
+            android:layout_marginTop="@dimen/marginTop_large"
+            android:text="@string/account"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textSize_small"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/settingsActivityButtonPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/settingsActivityTextAccount"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:padding="@dimen/buttons_padding">
+
+            <ImageView
+                android:id="@+id/settingsActivityButtonPhoneNumberIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_phone"
+                app:tint="@color/colorPrimary" />
+
+            <RelativeLayout
+                android:id="@+id/settingsActivityButtonPhoneNumberBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/marginStart_large"
+                android:layout_toEndOf="@id/settingsActivityButtonPhoneNumberIcon">
+
+                <TextView
+                    android:id="@+id/settingsActivityButtonPhoneNumberHelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone_number"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/textSize_small" />
+
+                <TextView
+                    android:id="@+id/settingsActivityButtonPhoneNumberText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/settingsActivityButtonPhoneNumberHelp"
+                    android:layout_marginTop="@dimen/settingsButtonText_marginTop"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textSize_normal" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <View
+            android:id="@+id/settingsActivityButtonPhoneNumberView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/view_height"
+            android:layout_below="@id/settingsActivityButtonPhoneNumber"
+            android:background="@color/colorAccentDark" />
+
+        <RelativeLayout
+            android:id="@+id/settingsActivityButtonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/settingsActivityButtonPhoneNumberView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:background="?selectableItemBackground"
+            android:padding="@dimen/buttons_padding">
+
+            <ImageView
+                android:id="@+id/settingsActivityButtonNameIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_person"
+                app:tint="@color/colorPrimary" />
+
+            <RelativeLayout
+                android:id="@+id/settingsActivityButtonNameBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/marginStart_large"
+                android:layout_toEndOf="@id/settingsActivityButtonNameIcon">
+
+                <TextView
+                    android:id="@+id/settingsActivityButtonNameHelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/textSize_small" />
+
+                <TextView
+                    android:id="@+id/settingsActivityButtonNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/settingsActivityButtonNameHelp"
+                    android:layout_marginTop="@dimen/settingsButtonText_marginTop"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textSize_normal" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                app:tint="@color/colorPrimary"
+                android:src="@drawable/ic_edit" />
+        </RelativeLayout>
+        <View
+            android:id="@+id/settingsActivityButtonNameView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/view_height"
+            android:layout_below="@id/settingsActivityButtonName"
+            android:background="@color/colorAccentDark" />
+        <RelativeLayout
+            android:id="@+id/settingsActivityButtonBio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/settingsActivityButtonNameView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:background="?selectableItemBackground"
+            android:padding="@dimen/buttons_padding">
+
+            <ImageView
+                android:id="@+id/settingsActivityButtonBioIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_info"
+                app:tint="@color/colorPrimary" />
+
+            <RelativeLayout
+                android:id="@+id/settingsActivityButtonBioBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/marginStart_large"
+                android:layout_toEndOf="@id/settingsActivityButtonBioIcon">
+
+                <TextView
+                    android:id="@+id/settingsActivityButtonBioHelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bio"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/textSize_small" />
+
+                <TextView
+                    android:id="@+id/settingsActivityButtonBioText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/settingsActivityButtonBioHelp"
+                    android:layout_marginTop="@dimen/settingsButtonText_marginTop"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textSize_normal" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_edit"
+                app:tint="@color/colorPrimary" />
+        </RelativeLayout>
+        <View
+            android:id="@+id/settingsActivityButtonBioView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/view_height"
+            android:layout_below="@id/settingsActivityButtonBio"
+            android:background="@color/colorAccentDark" />
+
+        <RelativeLayout
+            android:id="@+id/settingsActivityButtonPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/settingsActivityButtonBioView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:background="?selectableItemBackground"
+            android:padding="@dimen/buttons_padding">
+
+            <ImageView
+                android:id="@+id/settingsActivityButtonPasswordIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_key"
+                app:tint="@color/colorPrimary" />
+
+            <RelativeLayout
+                android:id="@+id/settingsActivityButtonPasswordBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/marginStart_large"
+                android:layout_toEndOf="@id/settingsActivityButtonPasswordIcon">
+
+                <TextView
+                    android:id="@+id/settingsActivityButtonPasswordHelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/password"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/textSize_small" />
+
+                <TextView
+                    android:id="@+id/settingsActivityButtonPasswordText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/settingsActivityButtonPasswordHelp"
+                    android:layout_marginTop="@dimen/settingsButtonText_marginTop"
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textSize_normal" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_edit"
+                app:tint="@color/colorPrimary" />
+        </RelativeLayout>
+        <View
+            android:id="@+id/settingsActivityButtonPasswordView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/view_height"
+            android:layout_below="@id/settingsActivityButtonPassword"
+            android:background="@color/colorAccentDark" />
+
+        <RelativeLayout
+            android:id="@+id/settingsActivityButtonRecoveryCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/settingsActivityButtonPasswordView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:background="?selectableItemBackground"
+            android:padding="@dimen/buttons_padding">
+
+            <ImageView
+                android:id="@+id/settingsActivityButtonRecoveryCodeIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_code"
+                app:tint="@color/colorPrimary" />
+
+            <RelativeLayout
+                android:id="@+id/settingsActivityButtonRecoveryCodeBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/marginStart_large"
+                android:layout_toEndOf="@id/settingsActivityButtonRecoveryCodeIcon">
+
+                <TextView
+                    android:id="@+id/settingsActivityButtonRecoveryCodeHelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recovery_code"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/textSize_small" />
+
+                <TextView
+                    android:id="@+id/settingsActivityButtonRecoveryCodeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/settingsActivityButtonRecoveryCodeHelp"
+                    android:layout_marginTop="@dimen/settingsButtonText_marginTop"
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textSize_normal" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_edit"
+                app:tint="@color/colorPrimary" />
+        </RelativeLayout>
+        <View
+            android:id="@+id/settingsActivityButtonRecoveryCodeView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/settingsView_height_large"
+            android:layout_below="@id/settingsActivityButtonRecoveryCode"
+            android:background="@color/colorAccentDark"/>
+
+        <TextView
+            android:id="@+id/settingsActivityTextSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/settingsActivityButtonRecoveryCodeView"
+            android:layout_marginStart="@dimen/marginStart_normal"
+            android:layout_marginTop="@dimen/marginTop_normal"
+            android:text="@string/settings"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textSize_small"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/settingsActivityButtonOnline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/settingsActivityTextSettings"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:background="?selectableItemBackground"
+            android:padding="@dimen/buttons_padding"
+            tools:ignore="UseSwitchCompatOrMaterialXml">
+
+            <ImageView
+                android:id="@+id/settingsActivityButtonOnlineIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_status"
+                app:tint="@color/colorPrimary" />
+
+            <RelativeLayout
+                android:id="@+id/settingsActivityButtonOnlineBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/marginStart_large"
+                android:layout_toEndOf="@id/settingsActivityButtonOnlineIcon">
+
+                <TextView
+                    android:id="@+id/settingsActivityButtonOnlineHelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/status"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/textSize_small" />
+
+                <TextView
+                    android:id="@+id/settingsActivityButtonOnlineText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/settingsActivityButtonOnlineHelp"
+                    android:layout_marginTop="@dimen/settingsButtonText_marginTop"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textSize_normal" />
+            </RelativeLayout>
+            <Switch
+                android:id="@+id/settingsActivityButtonSwitchStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/settingsActivityButtonOnlineView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/view_height"
+            android:layout_below="@id/settingsActivityButtonOnline"
+            android:background="@color/colorAccentDark" />
+        <RelativeLayout
+            android:id="@+id/settingsActivityButtonSignOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/settingsActivityButtonOnlineView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:background="?selectableItemBackground"
+            android:padding="@dimen/buttons_padding">
+
+            <TextView
+                android:id="@+id/settingActivityButtonSignOutText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/sign_out"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textSize_normal" />
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

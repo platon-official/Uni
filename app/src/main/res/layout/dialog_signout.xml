@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/showDialogSignOutCardView"
+        android:layout_width="@dimen/showDialogSignOutCardView_size"
+        android:layout_height="@dimen/showDialogSignOutCardView_size"
+        app:cardCornerRadius="@dimen/corner_radius"
+        android:layout_centerInParent="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?colorBackground">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:id="@+id/showDialogSignOutTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/marginStart_small"
+                    android:layout_marginEnd="@dimen/marginEnd_small"
+                    android:gravity="center"
+                    android:text="@string/you_sure_you_want_to_sign_out"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textSize_normal"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/showDialogSignOutButtonYes"
+                    android:layout_width="@dimen/dialogButton_width"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/showDialogSignOutTitle"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/marginTop_large"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="@string/yes"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/textSize_small" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

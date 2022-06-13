@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.UserInfoActivity"
+    android:background="?colorBackground"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    android:clipToPadding="false"
+    android:fillViewport="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/userActivityHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="?actionBarSize"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:background="?colorBackground">
+
+            <ImageView
+                android:id="@+id/userActivityButtonBack"
+                android:layout_width="@dimen/buttons_size"
+                android:layout_height="@dimen/buttons_size"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_back"
+                app:tint="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/userActivityTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textSize_large"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/userActivityHeaderImageProfile"
+            android:layout_width="@dimen/profileImage_size"
+            android:layout_height="@dimen/profileImage_size"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/userActivityHeader"
+            android:layout_marginTop="@dimen/marginTop_normal"
+            android:scaleType="centerCrop"
+            app:riv_oval="true" />
+
+        <TextView
+            android:id="@+id/userActivityTextInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userActivityHeaderImageProfile"
+            android:layout_marginStart="@dimen/marginStart_normal"
+            android:layout_marginTop="@dimen/marginTop_large"
+            android:text="@string/info"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textSize_small"
+            android:textStyle="bold" />
+        <RelativeLayout
+            android:id="@+id/userActivityButtonPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userActivityTextInfo"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:padding="@dimen/buttons_padding">
+
+            <ImageView
+                android:id="@+id/userActivityButtonPhoneNumberIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_phone"
+                app:tint="@color/colorPrimary" />
+
+            <RelativeLayout
+                android:id="@+id/userActivityButtonPhoneNumberBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/marginStart_large"
+                android:layout_toEndOf="@id/userActivityButtonPhoneNumberIcon">
+
+                <TextView
+                    android:id="@+id/userActivityButtonPhoneNumberHelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone_number"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/textSize_small" />
+
+                <TextView
+                    android:id="@+id/userActivityButtonPhoneNumberText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/userActivityButtonPhoneNumberHelp"
+                    android:layout_marginTop="@dimen/settingsButtonText_marginTop"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textSize_normal" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <View
+            android:id="@+id/userActivityButtonPhoneNumberView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/view_height"
+            android:layout_below="@id/userActivityButtonPhoneNumber"
+            android:background="@color/colorAccentDark" />
+        <RelativeLayout
+            android:id="@+id/userActivityButtonBio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userActivityButtonPhoneNumber"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:padding="@dimen/buttons_padding">
+
+            <ImageView
+                android:id="@+id/userActivityButtonBioIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_info"
+                app:tint="@color/colorPrimary" />
+
+            <RelativeLayout
+                android:id="@+id/userActivityButtonBioBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/marginStart_large"
+                android:layout_toEndOf="@id/userActivityButtonBioIcon">
+
+                <TextView
+                    android:id="@+id/userActivityButtonBioHelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bio"
+                    android:textColor="@color/colorGray"
+                    android:textSize="@dimen/textSize_small" />
+
+                <TextView
+                    android:id="@+id/userActivityButtonBioText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/userActivityButtonBioHelp"
+                    android:layout_marginTop="@dimen/settingsButtonText_marginTop"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textSize_normal" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

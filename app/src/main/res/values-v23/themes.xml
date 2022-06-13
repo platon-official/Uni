@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.Uni" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorControlNormal">@color/colorAccentDark</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorBackground">@color/colorAccent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/colorAccent</item>
+    </style>
+</resources>

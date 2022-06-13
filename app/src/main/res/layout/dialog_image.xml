@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/showDialogImageCardView"
+        android:layout_width="@dimen/showDialogImageCardView_size"
+        android:layout_height="@dimen/showDialogImageCardView_size"
+        app:cardCornerRadius="@dimen/corner_radius"
+        android:layout_centerInParent="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?colorBackground">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:id="@+id/showDialogImageTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_image"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/textSize_normal"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/showDialogImageButtonCamera"
+                    android:layout_width="@dimen/dialogButton_width"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/showDialogImageTitle"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/marginTop_normal"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="@string/camera"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/textSize_small" />
+
+                <Button
+                    android:id="@+id/showDialogImageButtonGallery"
+                    android:layout_width="@dimen/dialogButton_width"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/showDialogImageButtonCamera"
+                    android:layout_centerHorizontal="true"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="@string/gallery"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/textSize_small" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

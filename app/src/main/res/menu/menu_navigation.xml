@@ -1,0 +1,4 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/settings" android:icon="@drawable/ic_settings" android:title="@string/settings"/>
+    <item android:id="@+id/friend" android:icon="@drawable/ic_add_friend" android:title="@string/add_a_friend"/>
+</menu>
