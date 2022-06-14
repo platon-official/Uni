@@ -74,8 +74,8 @@ public class MainActivity extends BaseActivity implements ConversationListener {
         recentChatAdapter.notifyDataSetChanged();
         Glide.with(this).load(preferenceManager.getString(Constants.IMAGE_PROFILE)).into(binding.activityMainImageProfile);
         NavigationHeaderBinding headerBinding = NavigationHeaderBinding.bind(binding.activityMainNavigationView.getHeaderView(0));
-        headerBinding.headerUserName.setText(preferenceManager.getString(Constants.NAME));
-        headerBinding.headerUserPhone.setText(preferenceManager.getString(Constants.USERNAME));
+        headerBinding.headerName.setText(preferenceManager.getString(Constants.NAME));
+        headerBinding.headerUsername.setText(preferenceManager.getString(Constants.USERNAME));
         Glide.with(this).load(preferenceManager.getString(Constants.IMAGE_PROFILE)).into(headerBinding.headerImageProfile);
         headerBinding.headerImageProfile.setOnClickListener(view -> {
             binding.activityMainDrawerLayout.closeDrawer(GravityCompat.START);

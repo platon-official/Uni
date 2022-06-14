@@ -22,7 +22,7 @@
         android:layout_marginTop="@dimen/marginTop_normal">
 
         <TextView
-            android:id="@+id/headerUserName"
+            android:id="@+id/headerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
@@ -30,10 +30,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/headerUserPhone"
+            android:id="@+id/headerUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/headerUserName"
+            android:layout_below="@id/headerName"
             android:textColor="@color/colorGray"
             android:textSize="@dimen/textSize_small" />
     </RelativeLayout>

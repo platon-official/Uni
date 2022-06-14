@@ -60,19 +60,22 @@ public class ChangePasswordActivity extends BaseActivity {
             }else if (binding.activityChangePasswordNew.getText().toString().trim().length() < Constants.MINIMUM_PASSWORD_LENGTH){
                 ShowDialog.show(this, getResources().getString(R.string.password_is_too_short));
             }else {
-                ShowLoading.show(this);
-                InitFirebase.firebaseFirestore.collection(Constants.USERS)
-                        .document(preferenceManager.getString(Constants.USER_ID)).update(Constants.PASSWORD, binding.activityChangePasswordNew.getText().toString().trim())
-                        .addOnSuccessListener(unused -> {
-                            ShowLoading.dismissDialog();
-                            preferenceManager.putString(Constants.PASSWORD, binding.activityChangePasswordNew.getText().toString().trim());
-                            ShowToast.show(this, getResources().getString(R.string.password_updated_successfully), false);
-                            onBackPressed();
-                        }).addOnFailureListener(e -> {
-                            ShowLoading.dismissDialog();
-                            ShowDialog.show(this, getResources().getString(R.string.error));
-                });
+                changePassword();
             }
+        });
+    }
+    private void changePassword(){
+        ShowLoading.show(this);
+        InitFirebase.firebaseFirestore.collection(Constants.USERS)
+                .document(preferenceManager.getString(Constants.USER_ID)).update(Constants.PASSWORD, binding.activityChangePasswordNew.getText().toString().trim())
+                .addOnSuccessListener(unused -> {
+                    ShowLoading.dismissDialog();
+                    preferenceManager.putString(Constants.PASSWORD, binding.activityChangePasswordNew.getText().toString().trim());
+                    ShowToast.show(this, getResources().getString(R.string.password_updated_successfully), false);
+                    onBackPressed();
+                }).addOnFailureListener(e -> {
+            ShowLoading.dismissDialog();
+            ShowDialog.show(this, getResources().getString(R.string.error));
         });
     }
     private void setUserInfo(){

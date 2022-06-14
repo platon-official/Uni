@@ -82,7 +82,7 @@
             android:textStyle="bold" />
 
         <RelativeLayout
-            android:id="@+id/settingsActivityButtonPhoneNumber"
+            android:id="@+id/settingsActivityButtonUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/settingsActivityTextAccount"
@@ -123,12 +123,20 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="@dimen/textSize_normal" />
             </RelativeLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_edit"
+                app:tint="@color/colorPrimary" />
         </RelativeLayout>
         <View
             android:id="@+id/settingsActivityButtonPhoneNumberView"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/view_height"
-            android:layout_below="@id/settingsActivityButtonPhoneNumber"
+            android:layout_below="@id/settingsActivityButtonUsername"
             android:background="@color/colorAccentDark" />
 
         <RelativeLayout
@@ -180,8 +188,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                app:tint="@color/colorPrimary"
-                android:src="@drawable/ic_edit" />
+                android:src="@drawable/ic_edit"
+                app:tint="@color/colorPrimary" />
         </RelativeLayout>
         <View
             android:id="@+id/settingsActivityButtonNameView"

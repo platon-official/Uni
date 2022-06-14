@@ -60,19 +60,22 @@ public class ChangeNameActivity extends BaseActivity {
             if (binding.activityChangeNameNew.getText().toString().trim().isEmpty()){
                 ShowDialog.show(this, getResources().getString(R.string.name_can_not_be_empty));
             } else {
-                ShowLoading.show(this);
-                InitFirebase.firebaseFirestore.collection(Constants.USERS)
-                        .document(preferenceManager.getString(Constants.USER_ID)).update(Constants.NAME, binding.activityChangeNameNew.getText().toString().trim())
-                        .addOnSuccessListener(unused -> {
-                            ShowLoading.dismissDialog();
-                            preferenceManager.putString(Constants.NAME, binding.activityChangeNameNew.getText().toString().trim());
-                            ShowToast.show(this, getResources().getString(R.string.name_updated_successfully), false);
-                            onBackPressed();
-                        }).addOnFailureListener(e -> {
-                            ShowLoading.dismissDialog();
-                            ShowDialog.show(this, getResources().getString(R.string.error));
-                        });
+                changeName();
             }
+        });
+    }
+    private void changeName(){
+        ShowLoading.show(this);
+        InitFirebase.firebaseFirestore.collection(Constants.USERS)
+                .document(preferenceManager.getString(Constants.USER_ID)).update(Constants.NAME, binding.activityChangeNameNew.getText().toString().trim())
+                .addOnSuccessListener(unused -> {
+                    ShowLoading.dismissDialog();
+                    preferenceManager.putString(Constants.NAME, binding.activityChangeNameNew.getText().toString().trim());
+                    ShowToast.show(this, getResources().getString(R.string.name_updated_successfully), false);
+                    onBackPressed();
+                }).addOnFailureListener(e -> {
+            ShowLoading.dismissDialog();
+            ShowDialog.show(this, getResources().getString(R.string.error));
         });
     }
     @SuppressLint("SetTextI18n")
