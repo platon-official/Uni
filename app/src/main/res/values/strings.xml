@@ -51,7 +51,6 @@
     <string name="please_enter_the_username_of_the_person_you_want_to_find">Please enter the username of the person you want to find</string>
     <string name="status">Status</string>
     <string name="offline">Offline</string>
-    <string name="username_must_start_with">Username must start with</string>
     <string name="recovery_code_must_contain_8_digits">Recovery code must contain 8 digits</string>
     <string name="this_username_is_already_linked_to_the_account">This username is already linked to the account. Please choose another</string>
     <string name="password_is_too_short">Password is too short</string>

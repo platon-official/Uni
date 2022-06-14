@@ -51,8 +51,6 @@ public class ForgotPasswordFragment extends Fragment {
             }
             if (binding.fragmentForgotPasswordUsername.getText().toString().trim().length() < 2){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.username_can_not_be_empty));
-            }else if (!binding.fragmentForgotPasswordUsername.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)){
-                ShowDialog.show(requireActivity(), getResources().getString(R.string.username_must_start_with) + " '" + Constants.USERNAME_SIGN + "'");
             }else if (!binding.fragmentForgotPasswordUsername.getText().toString().trim().equals(binding.fragmentForgotPasswordUsername.getText().toString().trim().toLowerCase())){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.username_must_be_in_lower_case));
             }else if (binding.fragmentForgotPasswordUsername.getText().toString().trim().contains(" ")){
