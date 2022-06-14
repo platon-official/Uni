@@ -62,9 +62,9 @@ public class ChangeUsernameActivity extends AppCompatActivity {
         binding.activityChangeUsernameButtonBack.setOnClickListener(view -> onBackPressed());
         binding.activityChangeUsernameButtonCheck.setOnClickListener(view -> {
             if (binding.activityChangeUsernameNew.getText().toString().trim().isEmpty()){
-                ShowDialog.show(this, getResources().getString(R.string.password_can_not_be_empty));
-            }else if (binding.activityChangeUsernameNew.getText().toString().trim().length() < Constants.MINIMUM_PASSWORD_LENGTH){
-                ShowDialog.show(this, getResources().getString(R.string.password_is_too_short));
+                ShowDialog.show(this, getResources().getString(R.string.username_can_not_be_empty));
+            }else if (!binding.activityChangeUsernameNew.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)){
+                ShowDialog.show(this, getResources().getString(R.string.username_must_start_with) + " '" + Constants.USERNAME_SIGN + "'");
             }else {
                 changeUsername();
             }

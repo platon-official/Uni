@@ -93,6 +93,7 @@ public class SettingsActivity extends BaseActivity {
             startActivity(intent);
         });
         binding.settingsActivityButtonBack.setOnClickListener(view -> onBackPressed());
+        binding.settingsActivityButtonUsername.setOnClickListener(view -> Replace.replaceActivity(this, new ChangeUsernameActivity(), false));
         binding.settingsActivityButtonBio.setOnClickListener(view -> Replace.replaceActivity(this, new ChangeBioActivity(), false));
         binding.settingsActivityHeaderImageProfile.setOnClickListener(view -> Replace.replaceActivity(this, new ImageProfileActivity(), false));
         binding.settingsActivityHeaderChooseImageProfile.setOnClickListener(view -> showDialogImage());

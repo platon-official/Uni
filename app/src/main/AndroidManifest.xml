@@ -13,6 +13,7 @@
         android:theme="@style/Theme.Uni">
         <activity
             android:name=".activities.ChangeUsernameActivity"
+            android:windowSoftInputMode="stateVisible"
             android:exported="false" />
         <activity
             android:name=".activities.ImageUserActivity"
