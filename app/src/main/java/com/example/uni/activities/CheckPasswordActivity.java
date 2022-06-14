@@ -38,7 +38,7 @@ public class CheckPasswordActivity extends BaseActivity {
         binding.activityCheckPasswordButtonBack.setOnClickListener(view -> onBackPressed());
         binding.activityCheckPasswordButtonCheck.setOnClickListener(view -> {
             if (binding.activityCheckPasswordNew.getText().toString().trim().isEmpty()){
-                ShowDialog.show(this, getResources().getString(R.string.password_cant_be_empty));
+                ShowDialog.show(this, getResources().getString(R.string.password_can_not_be_empty));
             }else if (binding.activityCheckPasswordNew.getText().toString().trim().length() < Constants.MINIMUM_PASSWORD_LENGTH){
                 ShowDialog.show(this, getResources().getString(R.string.password_is_too_short));
             } else {

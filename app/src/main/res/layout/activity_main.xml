@@ -86,7 +86,7 @@
                 android:layout_below="@id/activityMainWarningImage"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/marginTop_normal"
-                android:text="@string/you_dont_have_any_chats_yet"
+                android:text="@string/you_do_not_have_any_chats_yet"
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/textSize_normal" />
         </RelativeLayout>

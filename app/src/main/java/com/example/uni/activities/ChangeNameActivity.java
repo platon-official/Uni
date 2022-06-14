@@ -58,7 +58,7 @@ public class ChangeNameActivity extends BaseActivity {
         binding.activityChangeNameButtonBack.setOnClickListener(view -> onBackPressed());
         binding.activityChangeNameButtonCheck.setOnClickListener(view -> {
             if (binding.activityChangeNameNew.getText().toString().trim().isEmpty()){
-                ShowDialog.show(this, getResources().getString(R.string.name_cant_be_empty));
+                ShowDialog.show(this, getResources().getString(R.string.name_can_not_be_empty));
             } else {
                 ShowLoading.show(this);
                 InitFirebase.firebaseFirestore.collection(Constants.USERS)
@@ -66,7 +66,7 @@ public class ChangeNameActivity extends BaseActivity {
                         .addOnSuccessListener(unused -> {
                             ShowLoading.dismissDialog();
                             preferenceManager.putString(Constants.NAME, binding.activityChangeNameNew.getText().toString().trim());
-                            ShowToast.show(this, getResources().getString(R.string.your_name_updated), false);
+                            ShowToast.show(this, getResources().getString(R.string.name_updated_successfully), false);
                             onBackPressed();
                         }).addOnFailureListener(e -> {
                             ShowLoading.dismissDialog();

@@ -56,7 +56,7 @@ public class ChangePasswordActivity extends BaseActivity {
         binding.activityChangePasswordButtonBack.setOnClickListener(view -> onBackPressed());
         binding.activityChangePasswordButtonCheck.setOnClickListener(view -> {
             if (binding.activityChangePasswordNew.getText().toString().trim().isEmpty()){
-                ShowDialog.show(this, getResources().getString(R.string.password_cant_be_empty));
+                ShowDialog.show(this, getResources().getString(R.string.password_can_not_be_empty));
             }else if (binding.activityChangePasswordNew.getText().toString().trim().length() < Constants.MINIMUM_PASSWORD_LENGTH){
                 ShowDialog.show(this, getResources().getString(R.string.password_is_too_short));
             }else {
@@ -66,7 +66,7 @@ public class ChangePasswordActivity extends BaseActivity {
                         .addOnSuccessListener(unused -> {
                             ShowLoading.dismissDialog();
                             preferenceManager.putString(Constants.PASSWORD, binding.activityChangePasswordNew.getText().toString().trim());
-                            ShowToast.show(this, getResources().getString(R.string.your_password_updated), false);
+                            ShowToast.show(this, getResources().getString(R.string.password_updated_successfully), false);
                             onBackPressed();
                         }).addOnFailureListener(e -> {
                             ShowLoading.dismissDialog();

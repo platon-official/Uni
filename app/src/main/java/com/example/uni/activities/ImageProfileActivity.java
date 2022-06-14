@@ -108,7 +108,7 @@ public class ImageProfileActivity extends BaseActivity {
                                     preferenceManager.putString(Constants.IMAGE_PROFILE, downloadUri);
                                     Glide.with(this).load(downloadUri).into(binding.activityImageImageProfile);
                                     ShowLoading.dismissDialog();
-                                    ShowToast.show(this, getResources().getString(R.string.profile_photo_updated), false);
+                                    ShowToast.show(this, getResources().getString(R.string.profile_photo_updated_successfully), false);
                                 }).addOnFailureListener(e -> {
                                     ShowLoading.dismissDialog();
                                     ShowDialog.show(this, getResources().getString(R.string.error));

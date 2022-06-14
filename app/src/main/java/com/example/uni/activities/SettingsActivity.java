@@ -57,7 +57,7 @@ public class SettingsActivity extends BaseActivity {
         super.onResume();
         binding.settingsActivityButtonRecoveryCodeText.setText(preferenceManager.getString(Constants.RECOVERY_CODE));
         binding.settingsActivityButtonNameText.setText(preferenceManager.getString(Constants.NAME));
-        binding.settingsActivityButtonPhoneNumberText.setText(preferenceManager.getString(Constants.PHONE_NUMBER));
+        binding.settingsActivityButtonPhoneNumberText.setText(preferenceManager.getString(Constants.USERNAME));
         binding.settingsActivityButtonBioText.setText(preferenceManager.getString(Constants.BIO));
         binding.settingsActivityButtonPasswordText.setText(preferenceManager.getString(Constants.PASSWORD));
         Glide.with(this).load(preferenceManager.getString(Constants.IMAGE_PROFILE)).into(binding.settingsActivityHeaderImageProfile);
@@ -180,7 +180,7 @@ public class SettingsActivity extends BaseActivity {
                                     preferenceManager.putString(Constants.IMAGE_PROFILE, downloadUri);
                                     Glide.with(this).load(downloadUri).into(binding.settingsActivityHeaderImageProfile);
                                     ShowLoading.dismissDialog();
-                                    ShowToast.show(this, getResources().getString(R.string.profile_photo_updated), false);
+                                    ShowToast.show(this, getResources().getString(R.string.profile_photo_updated_successfully), false);
                                 }).addOnFailureListener(e -> {
                                     ShowLoading.dismissDialog();
                                     ShowDialog.show(this, getResources().getString(R.string.error));

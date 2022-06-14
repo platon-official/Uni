@@ -3,7 +3,6 @@ package com.example.uni.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.PhoneNumberFormattingTextWatcher;
-import android.util.Patterns;
 
 import com.example.uni.R;
 import com.example.uni.adapters.UsersAdapter;
@@ -41,13 +40,13 @@ public class AddFriendActivity extends BaseActivity implements UserListeners {
     }
 
     private void setListeners() {
-        binding.addFriendActivityFriendPhoneNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+        binding.addFriendActivityFriendUsername.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         binding.addFriendActivityButtonBack.setOnClickListener(view -> onBackPressed());
         binding.addFriendActivityButtonFind.setOnClickListener(view -> {
-            if (binding.addFriendActivityFriendPhoneNumber.getText().toString().trim().isEmpty()){
-                ShowDialog.show(this, getResources().getString(R.string.phone_number_cant_be_empty));
-            } else if (!binding.addFriendActivityFriendPhoneNumber.getText().toString().trim().startsWith("+") || !Patterns.PHONE.matcher(binding.addFriendActivityFriendPhoneNumber.getText().toString().trim()).matches()) {
-                ShowDialog.show(this, getResources().getString(R.string.wrong_phone_number_format));
+            if (binding.addFriendActivityFriendUsername.getText().toString().trim().isEmpty()){
+                ShowDialog.show(this, getResources().getString(R.string.username_can_not_be_empty));
+            } else if (!binding.addFriendActivityFriendUsername.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)) {
+                ShowDialog.show(this, getResources().getString(R.string.username_must_start_with) + " '" + Constants.USERNAME_SIGN + "'");
             } else {
                 findFriend();
             }
@@ -57,7 +56,7 @@ public class AddFriendActivity extends BaseActivity implements UserListeners {
         ShowLoading.show(this);
         users.clear();
         InitFirebase.firebaseFirestore.collection(Constants.USERS)
-                .whereEqualTo(Constants.PHONE_NUMBER, binding.addFriendActivityFriendPhoneNumber.getText().toString().trim())
+                .whereEqualTo(Constants.USERNAME, binding.addFriendActivityFriendUsername.getText().toString().trim())
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size() > 0){
@@ -67,7 +66,7 @@ public class AddFriendActivity extends BaseActivity implements UserListeners {
                             } else {
                                 User user = new User();
                                 user.name = queryDocumentSnapshot.getString(Constants.NAME);
-                                user.phone = queryDocumentSnapshot.getString(Constants.PHONE_NUMBER);
+                                user.phone = queryDocumentSnapshot.getString(Constants.USERNAME);
                                 user.image = queryDocumentSnapshot.getString(Constants.IMAGE_PROFILE);
                                 user.token = queryDocumentSnapshot.getString(Constants.FCM_TOKEN);
                                 user.id = queryDocumentSnapshot.getId();
@@ -81,7 +80,7 @@ public class AddFriendActivity extends BaseActivity implements UserListeners {
                         }
                     } else {
                         ShowLoading.dismissDialog();
-                        ShowDialog.show(this, getResources().getString(R.string.we_couldnt_find_this_account));
+                        ShowDialog.show(this, getResources().getString(R.string.we_could_not_find_this_account));
                     }
                 }).addOnFailureListener(e -> {
                     ShowLoading.dismissDialog();

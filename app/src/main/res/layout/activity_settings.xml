@@ -95,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_phone"
+                android:src="@drawable/ic_username"
                 app:tint="@color/colorPrimary" />
 
             <RelativeLayout
@@ -110,7 +110,7 @@
                     android:id="@+id/settingsActivityButtonPhoneNumberHelp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/phone_number"
+                    android:text="@string/username"
                     android:textColor="@color/colorGray"
                     android:textSize="@dimen/textSize_small" />
 

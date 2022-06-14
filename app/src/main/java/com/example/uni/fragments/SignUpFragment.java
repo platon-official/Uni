@@ -10,9 +10,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.text.Editable;
 import android.text.InputFilter;
-import android.util.Patterns;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,20 +61,31 @@ public class SignUpFragment extends Fragment {
         preferenceManager.putString(Constants.IMAGE_PROFILE, Constants.DEFAULT_IMAGE_PROFILE);
     }
     private void setListeners(){
-        binding.signUpFragmentPhoneNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         binding.logInFragmentButtonBackToLogIn.setOnClickListener(view -> {
             requireActivity().onBackPressed();
+        });
+        binding.signUpFragmentName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                binding.signUpFragmentUsername.setText(Constants.USERNAME_SIGN + binding.signUpFragmentName.getText().toString().trim().toLowerCase());
+            }
         });
         binding.signUpFragmentImageProfileLayout.setOnClickListener(view -> showDialogImage());
         binding.signUpFragmentButtonCheck.setOnClickListener(view -> {
             if (binding.signUpFragmentName.getText().toString().trim().isEmpty()){
-                ShowDialog.show(requireActivity(), getResources().getString(R.string.name_cant_be_empty));
-            }else if(binding.signUpFragmentPhoneNumber.getText().toString().trim().isEmpty()){
-                ShowDialog.show(requireActivity(), getResources().getString(R.string.phone_number_cant_be_empty));
-            }else if (!binding.signUpFragmentPhoneNumber.getText().toString().trim().startsWith("+") || !Patterns.PHONE.matcher(binding.signUpFragmentPhoneNumber.getText().toString().trim()).matches()){
-                ShowDialog.show(requireActivity(), getResources().getString(R.string.wrong_phone_number_format));
+                ShowDialog.show(requireActivity(), getResources().getString(R.string.name_can_not_be_empty));
+            }else if(binding.signUpFragmentUsername.getText().toString().trim().isEmpty()){
+                ShowDialog.show(requireActivity(), getResources().getString(R.string.username_can_not_be_empty));
+            }else if (!binding.signUpFragmentUsername.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)){
+                ShowDialog.show(requireActivity(), getResources().getString(R.string.username_must_start_with) + " '" + Constants.USERNAME_SIGN + "'");
             }else if (binding.signUpFragmentPassword.getText().toString().trim().isEmpty()){
-                ShowDialog.show(requireActivity(), getResources().getString(R.string.phone_number_cant_be_empty));
+                ShowDialog.show(requireActivity(), getResources().getString(R.string.password_can_not_be_empty));
             }else if (binding.signUpFragmentPassword.getText().toString().trim().length() < Constants.MINIMUM_PASSWORD_LENGTH){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.password_is_too_short));
             }else if (!binding.signUpFragmentPassword.getText().toString().trim().equals(binding.signUpFragmentConfirmPassword.getText().toString().trim())){
@@ -86,7 +97,7 @@ public class SignUpFragment extends Fragment {
     }
     private void setMaxLength(){
         binding.signUpFragmentName.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.NAME_MAX_LENGTH))});
-        binding.signUpFragmentPhoneNumber.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.PHONE_MAX_LENGTH))});
+        binding.signUpFragmentUsername.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.USERNAME_MAX_LENGTH))});
         binding.signUpFragmentPassword.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.PASSWORD_MAX_LENGTH))});
         binding.signUpFragmentConfirmPassword.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.PASSWORD_MAX_LENGTH))});
     }
@@ -100,17 +111,17 @@ public class SignUpFragment extends Fragment {
     private void signUp() {
         ShowLoading.show(requireActivity());
         InitFirebase.firebaseFirestore.collection(Constants.USERS)
-                .whereEqualTo(Constants.PHONE_NUMBER, binding.signUpFragmentPhoneNumber.getText().toString().trim())
+                .whereEqualTo(Constants.USERNAME, binding.signUpFragmentUsername.getText().toString().trim())
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size() > 0){
                         ShowLoading.dismissDialog();
-                        ShowDialog.show(requireActivity(), getResources().getString(R.string.this_phone_number_is_already_linked_to_the_account));
+                        ShowDialog.show(requireActivity(), getResources().getString(R.string.this_username_is_already_linked_to_the_account));
                     } else {
                         String recoveryCode = getRecoveryCode();
                         HashMap<String, Object> user = new HashMap<>();
                         user.put(Constants.NAME, binding.signUpFragmentName.getText().toString().trim());
-                        user.put(Constants.PHONE_NUMBER, binding.signUpFragmentPhoneNumber.getText().toString().trim());
+                        user.put(Constants.USERNAME, binding.signUpFragmentUsername.getText().toString().trim());
                         user.put(Constants.PASSWORD, binding.signUpFragmentPassword.getText().toString().trim());
                         user.put(Constants.IMAGE_PROFILE, preferenceManager.getString(Constants.IMAGE_PROFILE));
                         user.put(Constants.BIO, Constants.DEFAULT_BIO);
@@ -122,7 +133,7 @@ public class SignUpFragment extends Fragment {
                                     preferenceManager.putBoolean(Constants.IS_SIGNED_IN, true);
                                     preferenceManager.putBoolean(Constants.STATUS, true);
                                     preferenceManager.putString(Constants.NAME, binding.signUpFragmentName.getText().toString().trim());
-                                    preferenceManager.putString(Constants.PHONE_NUMBER, binding.signUpFragmentPhoneNumber.getText().toString().trim());
+                                    preferenceManager.putString(Constants.USERNAME, binding.signUpFragmentUsername.getText().toString().trim());
                                     preferenceManager.putString(Constants.PASSWORD, binding.signUpFragmentPassword.getText().toString().trim());
                                     preferenceManager.putString(Constants.BIO, Constants.DEFAULT_BIO);
                                     preferenceManager.putString(Constants.RECOVERY_CODE, recoveryCode);

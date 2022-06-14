@@ -46,7 +46,7 @@ public class UserInfoActivity extends BaseActivity {
                     userName = documentSnapshot.getString(Constants.NAME);
                     binding.userActivityTitle.setText(userName);
                     Glide.with(this).load(imageProfile).into(binding.userActivityHeaderImageProfile);
-                    binding.userActivityButtonPhoneNumberText.setText(documentSnapshot.getString(Constants.PHONE_NUMBER));
+                    binding.userActivityButtonPhoneNumberText.setText(documentSnapshot.getString(Constants.USERNAME));
                     binding.userActivityButtonBioText.setText(documentSnapshot.getString(Constants.BIO));
                 });
     }

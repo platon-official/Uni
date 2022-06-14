@@ -44,7 +44,7 @@ public class ChangeBioActivity extends BaseActivity {
         binding.activityChangeBioButtonBack.setOnClickListener(view -> onBackPressed());
         binding.activityChangeBioButtonCheck.setOnClickListener(view -> {
             if (binding.activityChangeBioNew.getText().toString().trim().isEmpty()){
-                ShowDialog.show(this, getResources().getString(R.string.bio_cant_be_empty));
+                ShowDialog.show(this, getResources().getString(R.string.bio_can_not_be_empty));
             } else {
                 ShowLoading.show(this);
                 InitFirebase.firebaseFirestore.collection(Constants.USERS)
@@ -53,7 +53,7 @@ public class ChangeBioActivity extends BaseActivity {
                         .addOnSuccessListener(unused -> {
                             ShowLoading.dismissDialog();
                             preferenceManager.putString(Constants.BIO, binding.activityChangeBioNew.getText().toString().trim());
-                            ShowToast.show(this, getResources().getString(R.string.your_bio_updated), false);
+                            ShowToast.show(this, getResources().getString(R.string.bio_updated_successfully), false);
                             onBackPressed();
                         }).addOnFailureListener(e -> {
                             ShowLoading.dismissDialog();

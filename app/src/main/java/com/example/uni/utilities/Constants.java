@@ -24,15 +24,16 @@ public class Constants {
         }
         return remoteHeaders;
     }
+    public static final String USERNAME_SIGN = "@";
     public static final String ARGUMENT_PASSWORD = "argumentPassword";
     public static final String ARGUMENT_IMAGE_PROFILE = "argumentImageProfile";
-    public static final String ARGUMENT_NAME = "userName";
+    public static final String ARGUMENT_NAME = "argumentName";
     public static final String RECOVERY_CODE = "recoveryCode";
     public static final String PASSWORD = "password";
     public static final String PREFERENCE_NAME = "appPreference";
     public static final String USERS = "users";
-    public static final String PHONE_NUMBER = "userPhoneNumber";
-    public static final String NAME = "userName";
+    public static final String USERNAME = "userName";
+    public static final String NAME = "name";
     public static final String STORAGE_PACKAGE = "imageProfiles/";
     public static final String IMAGE_PROFILE = "imageProfile";
     public static final String IS_SIGNED_IN = "isSignedIn";
@@ -61,7 +62,7 @@ public class Constants {
     public static final String RECOVERY_CODE_MAX_LENGTH = "8";
     public static final String PASSWORD_MAX_LENGTH = "35";
     public static final String NAME_MAX_LENGTH = "25";
-    public static final String PHONE_MAX_LENGTH = "25";
+    public static final String USERNAME_MAX_LENGTH = "25";
     public static final String BIO_MAX_LENGTH = "30";
     public static final Integer MINIMUM_PASSWORD_LENGTH = 6;
 }

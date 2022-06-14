@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/plato/Documents/GitHub/Uni/app/src/main/res/drawable/ic_person.xml" value="0.1805" />
+        <entry key="..\:/Users/plato/Documents/GitHub/Uni/app/src/main/res/layout/activity_add_friend.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/plato/Documents/GitHub/Uni/app/src/main/res/layout/activity_settings.xml" value="0.14266304347826086" />
+        <entry key="..\:/Users/plato/Documents/GitHub/Uni/app/src/main/res/layout/activity_user_info.xml" value="0.25" />
+        <entry key="..\:/Users/plato/Documents/GitHub/Uni/app/src/main/res/layout/fragment_forgot_password.xml" value="0.14266304347826086" />
+        <entry key="..\:/Users/plato/Documents/GitHub/Uni/app/src/main/res/layout/fragment_log_in.xml" value="0.1762917933130699" />
+        <entry key="..\:/Users/plato/Documents/GitHub/Uni/app/src/main/res/layout/fragment_sign_up.xml" value="0.1762917933130699" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

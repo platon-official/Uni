@@ -26,7 +26,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <EditText
-        android:id="@+id/logInFragmentPhoneNumber"
+        android:id="@+id/logInFragmentUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/logInFragmentHeader"
@@ -37,9 +37,9 @@
         android:layout_marginEnd="@dimen/marginEnd_normal"
         android:background="@drawable/background_edit"
         android:gravity="center"
-        android:hint="@string/phone_number"
+        android:hint="@string/username"
         android:imeOptions="actionDone"
-        android:inputType="phone"
+        android:inputType="text"
         android:padding="@dimen/padding_large"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/textSize_large" />
@@ -48,7 +48,7 @@
         android:id="@+id/logInFragmentPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/logInFragmentPhoneNumber"
+        android:layout_below="@id/logInFragmentUsername"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:background="@drawable/background_edit"

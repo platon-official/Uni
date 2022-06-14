@@ -39,7 +39,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/marginTop_large"
                     android:backgroundTint="@color/colorPrimary"
-                    android:text="@string/yes"
+                    android:text="@string/yes_i_am_sure"
                     android:textAllCaps="false"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/textSize_small" />

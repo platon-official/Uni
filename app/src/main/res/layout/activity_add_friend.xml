@@ -34,7 +34,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <EditText
-        android:id="@+id/addFriendActivityFriendPhoneNumber"
+        android:id="@+id/addFriendActivityFriendUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/addFriendsActivityHeader"
@@ -46,7 +46,7 @@
         android:background="@drawable/background_edit"
         android:gravity="center"
         android:imeOptions="actionDone"
-        android:inputType="phone"
+        android:inputType="text"
         android:padding="@dimen/padding_large"
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/textSize_large" />
@@ -56,10 +56,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/marginStart_large"
         android:layout_marginEnd="@dimen/marginEnd_large"
-        android:layout_below="@id/addFriendActivityFriendPhoneNumber"
+        android:layout_below="@id/addFriendActivityFriendUsername"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/marginTop_small"
-        android:text="@string/please_enter_the_phone_number_of_the_person_you_want_to_find"
+        android:text="@string/please_enter_the_username_of_the_person_you_want_to_find"
         android:textColor="@color/colorGray"
         android:gravity="center"/>
 
