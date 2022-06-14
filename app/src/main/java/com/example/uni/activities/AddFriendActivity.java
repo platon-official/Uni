@@ -3,8 +3,6 @@ package com.example.uni.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 
 import com.example.uni.R;
 import com.example.uni.adapters.UsersAdapter;
