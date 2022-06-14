@@ -84,6 +84,10 @@ public class SignUpFragment extends Fragment {
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.username_can_not_be_empty));
             }else if (!binding.signUpFragmentUsername.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.username_must_start_with) + " '" + Constants.USERNAME_SIGN + "'");
+            }else if (!binding.signUpFragmentUsername.getText().toString().trim().equals(binding.signUpFragmentUsername.getText().toString().trim().toLowerCase())){
+                ShowDialog.show(requireActivity(), getResources().getString(R.string.username_must_be_in_lower_case));
+            }else if (binding.signUpFragmentUsername.getText().toString().trim().contains(" ")){
+                ShowDialog.show(requireActivity(), getResources().getString(R.string.username_must_be_without_spaces));
             }else if (binding.signUpFragmentPassword.getText().toString().trim().isEmpty()){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.password_can_not_be_empty));
             }else if (binding.signUpFragmentPassword.getText().toString().trim().length() < Constants.MINIMUM_PASSWORD_LENGTH){

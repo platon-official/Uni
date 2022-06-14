@@ -65,6 +65,10 @@ public class ChangeUsernameActivity extends AppCompatActivity {
                 ShowDialog.show(this, getResources().getString(R.string.username_can_not_be_empty));
             }else if (!binding.activityChangeUsernameNew.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)){
                 ShowDialog.show(this, getResources().getString(R.string.username_must_start_with) + " '" + Constants.USERNAME_SIGN + "'");
+            }else if (!binding.activityChangeUsernameNew.getText().toString().trim().equals(binding.activityChangeUsernameNew.getText().toString().trim().toLowerCase())){
+                ShowDialog.show(this, getResources().getString(R.string.username_must_be_in_lower_case));
+            }else if ((binding.activityChangeUsernameNew.getText().toString().trim().contains(" "))){
+                ShowDialog.show(this, getResources().getString(R.string.username_must_be_without_spaces));
             }else {
                 changeUsername();
             }

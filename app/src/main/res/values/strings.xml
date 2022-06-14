@@ -59,6 +59,8 @@
     <string name="username_can_not_be_empty">Username can\'t be empty</string>
     <string name="name_can_not_be_empty">Name can\'t be empty</string>
     <string name="password_can_not_be_empty">Password can\'t be empty</string>
+    <string name="username_must_be_in_lower_case">Username must be in lower case</string>
+    <string name="username_must_be_without_spaces">Username must be without spaces</string>
 
     <!--Errors-->
     <string name="incorrect_password">Incorrect password. Please try again</string>

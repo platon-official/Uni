@@ -40,14 +40,18 @@ public class AddFriendActivity extends BaseActivity implements UserListeners {
     }
 
     private void setListeners() {
-        binding.addFriendActivityFriendUsername.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+        binding.addFriendActivityUsername.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         binding.addFriendActivityButtonBack.setOnClickListener(view -> onBackPressed());
         binding.addFriendActivityButtonFind.setOnClickListener(view -> {
-            if (binding.addFriendActivityFriendUsername.getText().toString().trim().isEmpty()){
+            if (binding.addFriendActivityUsername.getText().toString().trim().isEmpty()){
                 ShowDialog.show(this, getResources().getString(R.string.username_can_not_be_empty));
-            } else if (!binding.addFriendActivityFriendUsername.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)) {
+            } else if (!binding.addFriendActivityUsername.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)) {
                 ShowDialog.show(this, getResources().getString(R.string.username_must_start_with) + " '" + Constants.USERNAME_SIGN + "'");
-            } else {
+            } else if (!binding.addFriendActivityUsername.getText().toString().trim().equals(binding.addFriendActivityUsername.getText().toString().trim().toLowerCase())){
+                ShowDialog.show(this, getResources().getString(R.string.username_must_be_in_lower_case));
+            } else if (binding.addFriendActivityUsername.getText().toString().trim().contains(" ")){
+                ShowDialog.show(this, getResources().getString(R.string.username_must_be_without_spaces));
+            }else {
                 findFriend();
             }
         });
@@ -56,7 +60,7 @@ public class AddFriendActivity extends BaseActivity implements UserListeners {
         ShowLoading.show(this);
         users.clear();
         InitFirebase.firebaseFirestore.collection(Constants.USERS)
-                .whereEqualTo(Constants.USERNAME, binding.addFriendActivityFriendUsername.getText().toString().trim())
+                .whereEqualTo(Constants.USERNAME, binding.addFriendActivityUsername.getText().toString().trim())
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful() && task.getResult() != null && task.getResult().getDocuments().size() > 0){

@@ -44,13 +44,17 @@ public class ForgotPasswordFragment extends Fragment {
         binding.fragmentForgotPasswordButtonCheck.setOnClickListener(view -> {
             if (binding.fragmentForgotPasswordUsername.getText().toString().trim().isEmpty()){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.username_can_not_be_empty));
-            } else if (!binding.fragmentForgotPasswordUsername.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)){
+            }else if (!binding.fragmentForgotPasswordUsername.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.username_must_start_with) + " '" + Constants.USERNAME_SIGN + "'");
-            } else if (binding.fragmentForgotPasswordRecoveryCode.getText().toString().trim().isEmpty()){
+            }else if (!binding.fragmentForgotPasswordUsername.getText().toString().trim().equals(binding.fragmentForgotPasswordUsername.getText().toString().trim().toLowerCase())){
+                ShowDialog.show(requireActivity(), getResources().getString(R.string.username_must_be_in_lower_case));
+            }else if (binding.fragmentForgotPasswordUsername.getText().toString().trim().contains(" ")){
+                ShowDialog.show(requireActivity(), getResources().getString(R.string.username_must_be_without_spaces));
+            }else if (binding.fragmentForgotPasswordRecoveryCode.getText().toString().trim().isEmpty()){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.recovery_code_can_not_be_empty));
             }else if (binding.fragmentForgotPasswordRecoveryCode.getText().toString().trim().length() < Integer.parseInt(Constants.RECOVERY_CODE_MAX_LENGTH)) {
                 ShowDialog.show(requireActivity(), getString(R.string.recovery_code_must_contain_8_digits));
-            } else {
+            }else {
                 logIn();
             }
         });
