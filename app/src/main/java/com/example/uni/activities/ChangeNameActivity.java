@@ -65,18 +65,20 @@ public class ChangeNameActivity extends BaseActivity {
         });
     }
     private void changeName(){
-        ShowLoading.show(this);
-        InitFirebase.firebaseFirestore.collection(Constants.USERS)
-                .document(preferenceManager.getString(Constants.USER_ID)).update(Constants.NAME, binding.activityChangeNameNew.getText().toString().trim())
-                .addOnSuccessListener(unused -> {
-                    ShowLoading.dismissDialog();
-                    preferenceManager.putString(Constants.NAME, binding.activityChangeNameNew.getText().toString().trim());
-                    ShowToast.show(this, getResources().getString(R.string.name_updated_successfully), false);
-                    onBackPressed();
-                }).addOnFailureListener(e -> {
-            ShowLoading.dismissDialog();
-            ShowDialog.show(this, getResources().getString(R.string.error));
-        });
+        if (!binding.activityChangeNameNew.getText().toString().trim().equals(preferenceManager.getString(Constants.NAME))){
+            ShowLoading.show(this);
+            InitFirebase.firebaseFirestore.collection(Constants.USERS)
+                    .document(preferenceManager.getString(Constants.USER_ID)).update(Constants.NAME, binding.activityChangeNameNew.getText().toString().trim())
+                    .addOnSuccessListener(unused -> {
+                        ShowLoading.dismissDialog();
+                        preferenceManager.putString(Constants.NAME, binding.activityChangeNameNew.getText().toString().trim());
+                        ShowToast.show(this, getResources().getString(R.string.name_updated_successfully), false);
+                        onBackPressed();
+                    }).addOnFailureListener(e -> {
+                ShowLoading.dismissDialog();
+                ShowDialog.show(this, getResources().getString(R.string.error));
+            });
+        }
     }
     @SuppressLint("SetTextI18n")
     private void setCount(){

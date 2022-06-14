@@ -1,5 +1,6 @@
 package com.example.uni.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.LayoutInflater;
@@ -20,11 +21,13 @@ import com.example.uni.utilities.ShowDialog;
 import com.example.uni.utilities.ShowLoading;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import org.jetbrains.annotations.NotNull;
+
 public class LogInFragment extends Fragment {
     private FragmentLogInBinding binding;
     private PreferenceManager preferenceManager;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLogInBinding.inflate(getLayoutInflater());
         initFields();
@@ -39,6 +42,7 @@ public class LogInFragment extends Fragment {
         preferenceManager.clear();
         setMaxLength();
     }
+    @SuppressLint("SetTextI18n")
     private void setListeners(){
         binding.logInFragmentButtonForgotPassword.setOnClickListener(view -> {
             Navigation.findNavController(view).navigate(R.id.action_logInFragment_to_forgotPasswordFragment);
@@ -47,7 +51,10 @@ public class LogInFragment extends Fragment {
             Navigation.findNavController(view).navigate(R.id.action_logInFragment_to_signUpFragment);
         });
         binding.logInFragmentButtonCheck.setOnClickListener(view -> {
-            if (binding.logInFragmentUsername.getText().toString().trim().isEmpty()) {
+            if (!binding.logInFragmentUsername.getText().toString().trim().contains(Constants.USERNAME_SIGN)){
+                binding.logInFragmentUsername.setText(Constants.USERNAME_SIGN + binding.logInFragmentUsername.getText().toString().trim());
+            }
+            if (binding.logInFragmentUsername.getText().toString().trim().length() < 2) {
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.username_can_not_be_empty));
             }else if (!binding.logInFragmentUsername.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.username_must_start_with) + " '" + Constants.USERNAME_SIGN + "'");

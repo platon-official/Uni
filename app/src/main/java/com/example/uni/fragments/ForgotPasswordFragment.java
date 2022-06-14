@@ -1,5 +1,6 @@
 package com.example.uni.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.view.LayoutInflater;
@@ -19,11 +20,13 @@ import com.example.uni.utilities.ShowDialog;
 import com.example.uni.utilities.ShowLoading;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import org.jetbrains.annotations.NotNull;
+
 public class ForgotPasswordFragment extends Fragment {
     private FragmentForgotPasswordBinding binding;
     private PreferenceManager preferenceManager;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentForgotPasswordBinding.inflate(getLayoutInflater());
         initFields();
@@ -39,10 +42,14 @@ public class ForgotPasswordFragment extends Fragment {
         setMaxLength();
     }
 
+    @SuppressLint("SetTextI18n")
     private void setListeners(){
         binding.fragmentForgotPasswordButtonBack.setOnClickListener(view -> requireActivity().onBackPressed());
         binding.fragmentForgotPasswordButtonCheck.setOnClickListener(view -> {
-            if (binding.fragmentForgotPasswordUsername.getText().toString().trim().isEmpty()){
+            if (!binding.fragmentForgotPasswordUsername.getText().toString().trim().contains(Constants.USERNAME_SIGN)){
+                binding.fragmentForgotPasswordUsername.setText(Constants.USERNAME_SIGN + binding.fragmentForgotPasswordUsername.getText().toString().trim());
+            }
+            if (binding.fragmentForgotPasswordUsername.getText().toString().trim().length() < 2){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.username_can_not_be_empty));
             }else if (!binding.fragmentForgotPasswordUsername.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.username_must_start_with) + " '" + Constants.USERNAME_SIGN + "'");

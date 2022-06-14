@@ -63,19 +63,21 @@ public class ChangeBioActivity extends BaseActivity {
         });
     }
     private void changeBio(){
-        ShowLoading.show(this);
-        InitFirebase.firebaseFirestore.collection(Constants.USERS)
-                .document(preferenceManager.getString(Constants.USER_ID))
-                .update(Constants.BIO, binding.activityChangeBioNew.getText().toString().trim())
-                .addOnSuccessListener(unused -> {
-                    ShowLoading.dismissDialog();
-                    preferenceManager.putString(Constants.BIO, binding.activityChangeBioNew.getText().toString().trim());
-                    ShowToast.show(this, getResources().getString(R.string.bio_updated_successfully), false);
-                    onBackPressed();
-                }).addOnFailureListener(e -> {
-                    ShowLoading.dismissDialog();
-                    ShowDialog.show(this, getResources().getString(R.string.error));
-        });
+        if (!binding.activityChangeBioNew.getText().toString().trim().equals(preferenceManager.getString(Constants.BIO))){
+            ShowLoading.show(this);
+            InitFirebase.firebaseFirestore.collection(Constants.USERS)
+                    .document(preferenceManager.getString(Constants.USER_ID))
+                    .update(Constants.BIO, binding.activityChangeBioNew.getText().toString().trim())
+                    .addOnSuccessListener(unused -> {
+                        ShowLoading.dismissDialog();
+                        preferenceManager.putString(Constants.BIO, binding.activityChangeBioNew.getText().toString().trim());
+                        ShowToast.show(this, getResources().getString(R.string.bio_updated_successfully), false);
+                        onBackPressed();
+                    }).addOnFailureListener(e -> {
+                        ShowLoading.dismissDialog();
+                        ShowDialog.show(this, getResources().getString(R.string.error));
+            });
+        }
     }
     private void setMaxLength(){
         binding.activityChangeBioNew.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.BIO_MAX_LENGTH))});

@@ -1,8 +1,10 @@
 package com.example.uni.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 import com.example.uni.R;
 import com.example.uni.adapters.UsersAdapter;
@@ -38,12 +40,14 @@ public class AddFriendActivity extends BaseActivity implements UserListeners {
     private void initFunc(){
         setListeners();
     }
-
+    @SuppressLint("SetTextI18n")
     private void setListeners() {
-        binding.addFriendActivityUsername.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         binding.addFriendActivityButtonBack.setOnClickListener(view -> onBackPressed());
         binding.addFriendActivityButtonFind.setOnClickListener(view -> {
-            if (binding.addFriendActivityUsername.getText().toString().trim().isEmpty()){
+            if (!binding.addFriendActivityUsername.getText().toString().trim().contains(Constants.USERNAME_SIGN)){
+                binding.addFriendActivityUsername.setText(Constants.USERNAME_SIGN + binding.addFriendActivityUsername.getText().toString().trim());
+            }
+            if (binding.addFriendActivityUsername.getText().toString().trim().length() < 2){
                 ShowDialog.show(this, getResources().getString(R.string.username_can_not_be_empty));
             } else if (!binding.addFriendActivityUsername.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)) {
                 ShowDialog.show(this, getResources().getString(R.string.username_must_start_with) + " '" + Constants.USERNAME_SIGN + "'");

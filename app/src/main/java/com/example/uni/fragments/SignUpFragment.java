@@ -37,6 +37,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 import java.util.Random;
 
@@ -45,7 +47,7 @@ public class SignUpFragment extends Fragment {
     private PreferenceManager preferenceManager;
     private Uri imageUri;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentSignUpBinding.inflate(getLayoutInflater());
         initFields();
@@ -60,6 +62,7 @@ public class SignUpFragment extends Fragment {
         setMaxLength();
         preferenceManager.putString(Constants.IMAGE_PROFILE, Constants.DEFAULT_IMAGE_PROFILE);
     }
+    @SuppressLint("SetTextI18n")
     private void setListeners(){
         binding.logInFragmentButtonBackToLogIn.setOnClickListener(view -> {
             requireActivity().onBackPressed();
@@ -71,6 +74,7 @@ public class SignUpFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void afterTextChanged(Editable editable) {
                 binding.signUpFragmentUsername.setText(Constants.USERNAME_SIGN + binding.signUpFragmentName.getText().toString().trim().toLowerCase());
@@ -78,9 +82,12 @@ public class SignUpFragment extends Fragment {
         });
         binding.signUpFragmentImageProfileLayout.setOnClickListener(view -> showDialogImage());
         binding.signUpFragmentButtonCheck.setOnClickListener(view -> {
+            if (!binding.signUpFragmentUsername.getText().toString().trim().contains(Constants.USERNAME_SIGN)){
+                binding.signUpFragmentUsername.setText(Constants.USERNAME_SIGN + binding.signUpFragmentUsername.getText().toString().trim());
+            }
             if (binding.signUpFragmentName.getText().toString().trim().isEmpty()){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.name_can_not_be_empty));
-            }else if(binding.signUpFragmentUsername.getText().toString().trim().isEmpty()){
+            }else if(binding.signUpFragmentUsername.getText().toString().trim().length() < 2){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.username_can_not_be_empty));
             }else if (!binding.signUpFragmentUsername.getText().toString().trim().startsWith(Constants.USERNAME_SIGN)){
                 ShowDialog.show(requireActivity(), getResources().getString(R.string.username_must_start_with) + " '" + Constants.USERNAME_SIGN + "'");

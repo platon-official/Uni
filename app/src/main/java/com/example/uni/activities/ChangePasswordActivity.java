@@ -65,18 +65,20 @@ public class ChangePasswordActivity extends BaseActivity {
         });
     }
     private void changePassword(){
-        ShowLoading.show(this);
-        InitFirebase.firebaseFirestore.collection(Constants.USERS)
-                .document(preferenceManager.getString(Constants.USER_ID)).update(Constants.PASSWORD, binding.activityChangePasswordNew.getText().toString().trim())
-                .addOnSuccessListener(unused -> {
-                    ShowLoading.dismissDialog();
-                    preferenceManager.putString(Constants.PASSWORD, binding.activityChangePasswordNew.getText().toString().trim());
-                    ShowToast.show(this, getResources().getString(R.string.password_updated_successfully), false);
-                    onBackPressed();
-                }).addOnFailureListener(e -> {
-            ShowLoading.dismissDialog();
-            ShowDialog.show(this, getResources().getString(R.string.error));
-        });
+        if (!binding.activityChangePasswordNew.getText().toString().trim().equals(preferenceManager.getString(Constants.PASSWORD))){
+            ShowLoading.show(this);
+            InitFirebase.firebaseFirestore.collection(Constants.USERS)
+                    .document(preferenceManager.getString(Constants.USER_ID)).update(Constants.PASSWORD, binding.activityChangePasswordNew.getText().toString().trim())
+                    .addOnSuccessListener(unused -> {
+                        ShowLoading.dismissDialog();
+                        preferenceManager.putString(Constants.PASSWORD, binding.activityChangePasswordNew.getText().toString().trim());
+                        ShowToast.show(this, getResources().getString(R.string.password_updated_successfully), false);
+                        onBackPressed();
+                    }).addOnFailureListener(e -> {
+                        ShowLoading.dismissDialog();
+                        ShowDialog.show(this, getResources().getString(R.string.error));
+            });
+        }
     }
     private void setUserInfo(){
         binding.activityChangePasswordNew.setText(preferenceManager.getString(Constants.PASSWORD));
