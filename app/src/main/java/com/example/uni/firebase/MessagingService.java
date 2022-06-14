@@ -1,5 +1,6 @@
 package com.example.uni.firebase;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -30,7 +31,7 @@ public class MessagingService extends FirebaseMessagingService {
         int notificationId = new Random().nextInt();
         String channelId = "chat_message";
         Intent intent = new Intent(this, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId);
         builder.setSmallIcon(R.drawable.ic_notification);
         builder.setContentTitle(message.getData().get(Constants.NAME));
