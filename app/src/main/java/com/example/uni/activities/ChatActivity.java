@@ -207,14 +207,14 @@ public class ChatActivity extends BaseActivity {
                             JSONArray results = responseJson.getJSONArray("results");
                             if (responseJson.getInt("failure") == 1){
                                 JSONObject error = (JSONObject) results.get(0);
-                                ShowToast.show(ChatActivity.this, getResources().getString(R.string.error) + error.getString("error"), true);
+                                ShowToast.show(ChatActivity.this, getResources().getString(R.string.error) + " " + error.getString("error"), true);
                             }
                         }
                     } catch (JSONException e){
                         e.printStackTrace();
                     }
                 } else {
-                    ShowToast.show(ChatActivity.this, getResources().getString(R.string.error) + response.code(), true);
+                    ShowToast.show(ChatActivity.this, getResources().getString(R.string.error) + " " + response.code(), true);
                 }
             }
 
