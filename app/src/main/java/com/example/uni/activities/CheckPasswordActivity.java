@@ -57,7 +57,7 @@ public class CheckPasswordActivity extends BaseActivity {
         if (binding.activityCheckPasswordNew.getText().toString().trim().equals(preferenceManager.getString(Constants.PASSWORD))){
             if (type){
                 Replace.replaceActivity(this, new ChangePasswordActivity(), true);
-            }else {
+            } else {
                 String recoveryCode = getRecoveryCode();
                 ShowLoading.show(this);
                 InitFirebase.firebaseFirestore.collection(Constants.USERS)
