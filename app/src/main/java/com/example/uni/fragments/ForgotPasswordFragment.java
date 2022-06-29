@@ -41,7 +41,6 @@ public class ForgotPasswordFragment extends Fragment {
         setListeners();
         setMaxLength();
     }
-
     @SuppressLint("SetTextI18n")
     private void setListeners(){
         binding.fragmentForgotPasswordButtonBack.setOnClickListener(view -> requireActivity().onBackPressed());
