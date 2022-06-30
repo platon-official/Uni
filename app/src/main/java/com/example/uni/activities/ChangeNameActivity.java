@@ -40,7 +40,7 @@ public class ChangeNameActivity extends BaseActivity {
         binding.activityChangeNameNew.setText(preferenceManager.getString(Constants.NAME));
     }
     private void setMaxLength(){
-        binding.activityChangeNameNew.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.NAME_MAX_LENGTH))});
+        binding.activityChangeNameNew.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Constants.NAME_MAX_LENGTH)});
     }
     private void setListeners(){
         binding.activityChangeNameNew.addTextChangedListener(new TextWatcher() {

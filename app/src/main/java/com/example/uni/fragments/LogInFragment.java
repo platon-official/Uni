@@ -45,13 +45,13 @@ public class LogInFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     private void setListeners(){
         binding.logInFragmentButtonForgotPassword.setOnClickListener(view -> {
-            Navigation.findNavController(view).navigate(R.id.action_logInFragment_to_forgotPasswordFragment);
+            Navigation.findNavController(requireView()).navigate(R.id.action_logInFragment_to_forgotPasswordFragment);
         });
         binding.logInFragmentButtonCreateNewAccount.setOnClickListener(view -> {
-            Navigation.findNavController(view).navigate(R.id.action_logInFragment_to_signUpFragment);
+            Navigation.findNavController(requireView()).navigate(R.id.action_logInFragment_to_signUpFragment);
         });
         binding.logInFragmentButtonCheck.setOnClickListener(view -> {
-            if (!binding.logInFragmentUsername.getText().toString().trim().contains(Constants.USERNAME_SIGN)){
+            if (!binding.logInFragmentUsername.getText().toString().trim().contains(Constants.USERNAME_SIGN) && !binding.logInFragmentUsername.getText().toString().trim().isEmpty()){
                 binding.logInFragmentUsername.setText(Constants.USERNAME_SIGN + binding.logInFragmentUsername.getText().toString().trim());
             }
             if (binding.logInFragmentUsername.getText().toString().trim().length() < 2) {
@@ -98,7 +98,7 @@ public class LogInFragment extends Fragment {
                 });
     }
     private void setMaxLength(){
-        binding.logInFragmentUsername.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.USERNAME_MAX_LENGTH))});
-        binding.logInFragmentPassword.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.PASSWORD_MAX_LENGTH))});
+        binding.logInFragmentUsername.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Constants.USERNAME_MAX_LENGTH)});
+        binding.logInFragmentPassword.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Constants.PASSWORD_MAX_LENGTH)});
     }
 }

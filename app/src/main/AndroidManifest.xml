@@ -23,6 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".activities.RegisterActivity"
+            android:windowSoftInputMode="stateVisible"
             android:exported="false" />
         <activity
             android:name=".activities.CheckPasswordActivity"

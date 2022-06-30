@@ -42,7 +42,7 @@ public class AddFriendActivity extends BaseActivity implements UserListeners {
     private void setListeners() {
         binding.addFriendActivityButtonBack.setOnClickListener(view -> onBackPressed());
         binding.addFriendActivityButtonFind.setOnClickListener(view -> {
-            if (!binding.addFriendActivityUsername.getText().toString().trim().contains(Constants.USERNAME_SIGN)){
+            if (!binding.addFriendActivityUsername.getText().toString().trim().contains(Constants.USERNAME_SIGN) && !binding.addFriendActivityUsername.getText().toString().trim().isEmpty()){
                 binding.addFriendActivityUsername.setText(Constants.USERNAME_SIGN + binding.addFriendActivityUsername.getText().toString().trim());
             }
             if (binding.addFriendActivityUsername.getText().toString().trim().length() < 2){

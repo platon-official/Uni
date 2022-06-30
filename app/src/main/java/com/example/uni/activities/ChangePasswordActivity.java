@@ -57,9 +57,9 @@ public class ChangePasswordActivity extends BaseActivity {
         binding.activityChangePasswordButtonCheck.setOnClickListener(view -> {
             if (binding.activityChangePasswordNew.getText().toString().trim().isEmpty()){
                 ShowDialog.show(this, getResources().getString(R.string.password_can_not_be_empty));
-            }else if (binding.activityChangePasswordNew.getText().toString().trim().length() < Constants.MINIMUM_PASSWORD_LENGTH){
+            } else if (binding.activityChangePasswordNew.getText().toString().trim().length() < Constants.MINIMUM_PASSWORD_LENGTH){
                 ShowDialog.show(this, getResources().getString(R.string.password_is_too_short));
-            }else {
+            } else {
                 changePassword();
             }
         });
@@ -84,7 +84,7 @@ public class ChangePasswordActivity extends BaseActivity {
         binding.activityChangePasswordNew.setText(preferenceManager.getString(Constants.PASSWORD));
     }
     private void setMaxLength(){
-        binding.activityChangePasswordNew.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.PASSWORD_MAX_LENGTH))});
+        binding.activityChangePasswordNew.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Constants.PASSWORD_MAX_LENGTH)});
     }
     @SuppressLint("SetTextI18n")
     private void setCount(){

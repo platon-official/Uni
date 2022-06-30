@@ -58,7 +58,7 @@ public class ChangeUsernameActivity extends AppCompatActivity {
         });
         binding.activityChangeUsernameButtonBack.setOnClickListener(view -> onBackPressed());
         binding.activityChangeUsernameButtonCheck.setOnClickListener(view -> {
-            if (!binding.activityChangeUsernameNew.getText().toString().trim().contains(Constants.USERNAME_SIGN)){
+            if (!binding.activityChangeUsernameNew.getText().toString().trim().contains(Constants.USERNAME_SIGN) && !binding.activityChangeUsernameNew.getText().toString().trim().isEmpty()){
                 binding.activityChangeUsernameNew.setText(Constants.USERNAME_SIGN + binding.activityChangeUsernameNew.getText().toString().trim());
             }
             if (binding.activityChangeUsernameNew.getText().toString().trim().length() < 2){
@@ -84,7 +84,8 @@ public class ChangeUsernameActivity extends AppCompatActivity {
                             ShowDialog.show(this, getResources().getString(R.string.this_username_is_already_linked_to_the_account));
                         } else {
                             InitFirebase.firebaseFirestore.collection(Constants.USERS)
-                                    .document(preferenceManager.getString(Constants.USER_ID)).update(Constants.USERNAME, binding.activityChangeUsernameNew.getText().toString().trim())
+                                    .document(preferenceManager.getString(Constants.USER_ID))
+                                    .update(Constants.USERNAME, binding.activityChangeUsernameNew.getText().toString().trim())
                                     .addOnSuccessListener(unused -> {
                                         ShowLoading.dismissDialog();
                                         preferenceManager.putString(Constants.USERNAME, binding.activityChangeUsernameNew.getText().toString().trim());
@@ -102,7 +103,7 @@ public class ChangeUsernameActivity extends AppCompatActivity {
         binding.activityChangeUsernameNew.setText(preferenceManager.getString(Constants.USERNAME));
     }
     private void setMaxLength(){
-        binding.activityChangeUsernameNew.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.USERNAME_MAX_LENGTH))});
+        binding.activityChangeUsernameNew.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Constants.USERNAME_MAX_LENGTH)});
     }
     @SuppressLint("SetTextI18n")
     private void setCount(){

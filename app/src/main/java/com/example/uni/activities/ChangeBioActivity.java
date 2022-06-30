@@ -80,7 +80,7 @@ public class ChangeBioActivity extends BaseActivity {
         }
     }
     private void setMaxLength(){
-        binding.activityChangeBioNew.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.BIO_MAX_LENGTH))});
+        binding.activityChangeBioNew.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Constants.BIO_MAX_LENGTH)});
     }
     @SuppressLint("SetTextI18n")
     private void setCount(){

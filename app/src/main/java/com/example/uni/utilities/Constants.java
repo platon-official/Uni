@@ -39,7 +39,6 @@ public class Constants {
     public static final String IS_SIGNED_IN = "isSignedIn";
     public static final String BIO = "bio";
     public static final String USER_ID = "userId";
-    public static final String APP_VERSION = "Beta 1.2.0";
     public static final Integer DELAY_MILLS = 1000;
     public static final String DEFAULT_IMAGE_PROFILE = "https://firebasestorage.googleapis.com/v0/b/uni1-c1b01.appspot.com/o/imageProfiles%2Fimage_profile.png?alt=media&token=42efb4d1-5ea9-4b13-9110-81083500782c";
     public static final String DEFAULT_BIO = "Hi, I am using Uni";
@@ -59,10 +58,10 @@ public class Constants {
     public static final String RECEIVER_IMAGE = "receiverImage";
     public static final String LAST_MESSAGE = "lastMessage";
     /*Length*/
-    public static final String RECOVERY_CODE_MAX_LENGTH = "8";
-    public static final String PASSWORD_MAX_LENGTH = "35";
-    public static final String NAME_MAX_LENGTH = "25";
-    public static final String USERNAME_MAX_LENGTH = "25";
-    public static final String BIO_MAX_LENGTH = "30";
+    public static final Integer RECOVERY_CODE_MAX_LENGTH = 8;
+    public static final Integer PASSWORD_MAX_LENGTH = 35;
+    public static final Integer NAME_MAX_LENGTH = 25;
+    public static final Integer USERNAME_MAX_LENGTH = 25;
+    public static final Integer BIO_MAX_LENGTH = 30;
     public static final Integer MINIMUM_PASSWORD_LENGTH = 6;
 }

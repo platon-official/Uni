@@ -34,7 +34,7 @@
     <string name="bio_can_not_be_empty">Bio can\'t be empty</string>
     <string name="message">Message</string>
     <string name="no_friends_available">No friends available</string>
-    <string name="no_messages_here_yet">No messages here yet...</string>
+    <string name="no_messages_here_yet">No messages here yet…</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm password</string>
     <string name="create">Create</string>
@@ -62,6 +62,7 @@
     <string name="username_must_be_without_spaces">Username must be without spaces</string>
 
     <!--Errors-->
+    <string name="you_cannot_use_your_password_again_choose_a_different_one">You cannot use your password again. Choose a different one</string>
     <string name="incorrect_password">Incorrect password. Please try again</string>
     <string name="error">Something went wrong. Please try again</string>
     <string name="we_could_not_find_this_account">We couldn\'t find this account. Please try again.</string>

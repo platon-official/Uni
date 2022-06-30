@@ -82,7 +82,7 @@ public class SignUpFragment extends Fragment {
         });
         binding.signUpFragmentImageProfileLayout.setOnClickListener(view -> showDialogImage());
         binding.signUpFragmentButtonCheck.setOnClickListener(view -> {
-            if (!binding.signUpFragmentUsername.getText().toString().trim().contains(Constants.USERNAME_SIGN)){
+            if (!binding.signUpFragmentUsername.getText().toString().trim().contains(Constants.USERNAME_SIGN) && !binding.signUpFragmentUsername.getText().toString().trim().isEmpty()){
                 binding.signUpFragmentUsername.setText(Constants.USERNAME_SIGN + binding.signUpFragmentUsername.getText().toString().trim());
             }
             if (binding.signUpFragmentName.getText().toString().trim().isEmpty()){
@@ -105,10 +105,10 @@ public class SignUpFragment extends Fragment {
         });
     }
     private void setMaxLength(){
-        binding.signUpFragmentName.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.NAME_MAX_LENGTH))});
-        binding.signUpFragmentUsername.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.USERNAME_MAX_LENGTH))});
-        binding.signUpFragmentPassword.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.PASSWORD_MAX_LENGTH))});
-        binding.signUpFragmentConfirmPassword.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Integer.parseInt(Constants.PASSWORD_MAX_LENGTH))});
+        binding.signUpFragmentName.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Constants.NAME_MAX_LENGTH)});
+        binding.signUpFragmentUsername.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Constants.USERNAME_MAX_LENGTH)});
+        binding.signUpFragmentPassword.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Constants.PASSWORD_MAX_LENGTH)});
+        binding.signUpFragmentConfirmPassword.setFilters(new InputFilter[] {new InputFilter.LengthFilter(Constants.PASSWORD_MAX_LENGTH)});
     }
     @SuppressLint("DefaultLocale")
     public static String getRecoveryCode() {
